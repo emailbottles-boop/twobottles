@@ -6,6 +6,13 @@
   <title>TwoBottles</title>
 
   <style>
+    :root {
+      --bg: #020617;
+      --fg: #e5e7eb;
+      --muted: #64748b;
+      --accent: #38bdf8;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -13,141 +20,101 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #020617;
-      color: #e5e7eb;
+      background: var(--bg);
+      color: var(--fg);
       overflow-x: hidden;
     }
 
     /* Background bottles */
-    .background {
+    .bg {
       position: fixed;
       inset: 0;
       z-index: -1;
       overflow: hidden;
     }
 
-    .bottle-bg {
+    .bottle {
       position: absolute;
       top: 50%;
+      font-size: 32rem;
+      opacity: 0.04;
       transform: translateY(-50%);
-      font-size: 35rem;
-      opacity: 0.05;
+      transition: transform 0.1s ease-out;
       user-select: none;
       pointer-events: none;
-      transition: transform 0.05s linear;
     }
 
-    .bottle-left {
-      left: -10%;
+    .bottle.left {
+      left: -8%;
     }
 
-    .bottle-right {
-      right: -10%;
+    .bottle.right {
+      right: -8%;
     }
 
-    /* Main content */
-    .container {
+    /* Layout */
+    main {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      gap: 40px;
+      padding: 80px 20px;
+      gap: 60px;
     }
 
     h1 {
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       font-size: 3rem;
       margin: 0;
     }
 
+    /* Tracks */
     .tracks {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
       width: 100%;
-      max-width: 1000px;
+      max-width: 900px;
     }
 
-    iframe {
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    .track {
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #64748b;
+    .track::after {
+      content: "▶";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      background: rgba(0,0,0,0.4);
     }
-  </style>
-</head>
-<body>
 
-  <!-- Background silhouettes -->
-  <div class="background">
-    <div class="bottle-bg bottle-left">🍾</div>
-    <div class="bottle-bg bottle-right">🍾</div>
-  </div>
+    .track:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
 
-  <!-- Content -->
-  <div class="container">
-    <h1>TWOBOTTLES</h1>
+    .track:hover::after {
+      opacity: 1;
+    }
 
-    <div class="tracks">
-      <!-- Track 1 -->
-      <iframe
-        width="100%"
-        height="300"
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/emailbottles/day-dreaming-demon&color=%2338bdf8&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-      </iframe>
+    .track h3 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+    }
 
-      <!-- Track 2 -->
-      <iframe
-        width="100%"
-        height="300"
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/emailbottles/aswoozy-always-run-it-up-prod-twobottles&color=%2338bdf8&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-      </iframe>
-
-      <!-- Track 3 -->
-      <iframe
-        width="100%"
-        height="300"
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/emailbottles/come-thru&color=%2338bdf8&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-      </iframe>
-    </div>
-
-    <footer>
-      © TwoBottles
-    </footer>
-  </div>
-
-  <!-- Mouse parallax script -->
-  <script>
-    const leftBottle = document.querySelector('.bottle-left');
-    const rightBottle = document.querySelector('.bottle-right');
-
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 40;
-      const y = (e.clientY / window.innerHeight - 0.5) * 40;
-
-      leftBottle.style.transform =
-        `translate(${x}px, calc(-50% + ${y}px))`;
-
-      rightBottle.style.transform =
-        `translate(${-x}px, calc(-50% + ${-y}px))`;
-    });
-  </script>
-
-</body>
-</html>
-
+    .track p {
+      margin: 0;
+      color: var(--muted);
