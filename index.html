@@ -118,3 +118,64 @@
     .track p {
       margin: 0;
       color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg">
+    <div class="bottle left">🍾</div>
+    <div class="bottle right">🍾</div>
+  </div>
+
+  <!-- Content -->
+  <main>
+    <h1>TWOBOTTLES</h1>
+
+    <section class="tracks">
+      <a class="track" href="https://soundcloud.com/emailbottles/day-dreaming-demon" target="_blank">
+        <h3>Day Dreaming Demon</h3>
+        <p>SoundCloud</p>
+      </a>
+
+      <a class="track" href="https://soundcloud.com/emailbottles/aswoozy-always-run-it-up-prod-twobottles" target="_blank">
+        <h3>Always Run It Up</h3>
+        <p>prod. TwoBottles</p>
+      </a>
+
+      <a class="track" href="https://soundcloud.com/emailbottles/come-thru" target="_blank">
+        <h3>Come Thru</h3>
+        <p>SoundCloud</p>
+      </a>
+    </section>
+
+    <footer>
+      © TwoBottles
+    </footer>
+  </main>
+
+  <!-- Parallax -->
+  <script>
+    const bottles = document.querySelectorAll('.bottle');
+
+    document.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+      bottles[0].style.transform =
+        `translate(${x}px, calc(-50% + ${y}px))`;
+
+      bottles[1].style.transform =
+        `translate(${-x}px, calc(-50% + ${-y}px))`;
+    });
+  </script>
+
+</body>
+</html>
