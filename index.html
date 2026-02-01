@@ -2,172 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TwoBottles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TWOBOTTLES — LIVE TEST</title>
 
   <style>
-    :root {
-      --bg: #05070f;
-      --fg: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      overflow-x: hidden;
-    }
-
-    /* Background silhouettes */
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .bottle {
-      position: absolute;
-      top: 50%;
-      width: 220px;
-      height: 520px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 60px 60px 40px 40px;
-      transform: translateY(-50%);
-      transition: transform 0.1s ease-out;
-    }
-
-    .bottle::before {
-      content: "";
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 100px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 20px;
-    }
-
-    .bottle.left {
-      left: -80px;
-    }
-
-    .bottle.right {
-      right: -80px;
-    }
-
-    /* Layout */
-    main {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #020617, #020617, #0ea5e9);
+      color: white;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 80px 20px;
-      gap: 50px;
+    }
+
+    .box {
+      background: rgba(0,0,0,0.6);
+      border-radius: 20px;
+      padding: 50px;
       text-align: center;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
     }
 
     h1 {
+      margin: 0 0 10px;
       font-size: 3rem;
-      letter-spacing: 6px;
-      margin: 0;
+      letter-spacing: 4px;
     }
 
-    /* Tracks */
-    .tracks {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .status {
+      color: #38bdf8;
+      margin-bottom: 30px;
+      font-weight: bold;
     }
 
-    .track {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 22px;
+    a {
+      display: block;
+      margin: 15px 0;
+      padding: 16px;
       border-radius: 12px;
-      background: rgba(255,255,255,0.03);
+      background: #38bdf8;
+      color: #020617;
       text-decoration: none;
-      color: var(--fg);
-      transition: background 0.2s ease, transform 0.2s ease;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .track:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-2px);
-    }
-
-    .track span {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 0.8rem;
-      color: var(--muted);
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
 
-  <!-- Background -->
-  <div class="background">
-    <div class="bottle left"></div>
-    <div class="bottle right"></div>
-  </div>
-
-  <!-- Content -->
-  <main>
+  <div class="box">
     <h1>TWOBOTTLES</h1>
+    <div class="status">NEW VERSION LOADED ✔</div>
 
-    <section class="tracks">
-      <a class="track" href="https://soundcloud.com/emailbottles/day-dreaming-demon" target="_blank">
-        <div>Day Dreaming Demon</div>
-        <span>SoundCloud →</span>
-      </a>
+    <a href="https://soundcloud.com/emailbottles/day-dreaming-demon" target="_blank">
+      ▶ Day Dreaming Demon
+    </a>
 
-      <a class="track" href="https://soundcloud.com/emailbottles/aswoozy-always-run-it-up-prod-twobottles" target="_blank">
-        <div>Always Run It Up</div>
-        <span>SoundCloud →</span>
-      </a>
+    <a href="https://soundcloud.com/emailbottles/aswoozy-always-run-it-up-prod-twobottles" target="_blank">
+      ▶ Always Run It Up
+    </a>
 
-      <a class="track" href="https://soundcloud.com/emailbottles/come-thru" target="_blank">
-        <div>Come Thru</div>
-        <span>SoundCloud →</span>
-      </a>
-    </section>
-
-    <footer>© TwoBottles</footer>
-  </main>
-
-  <!-- Parallax -->
-  <script>
-    const leftBottle = document.querySelector('.bottle.left');
-    const rightBottle = document.querySelector('.bottle.right');
-
-    document.addEventListener('mousemove', e => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-      leftBottle.style.transform =
-        `translate(${x}px, calc(-50% + ${y}px))`;
-
-      rightBottle.style.transform =
-        `translate(${-x}px, calc(-50% + ${-y}px))`;
-    });
-  </script>
+    <a href="https://soundcloud.com/emailbottles/come-thru" target="_blank">
+      ▶ Come Thru
+    </a>
+  </div>
 
 </body>
 </html>
