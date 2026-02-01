@@ -1,14 +1,122 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TV Show Title</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>TwoBottles</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .logo .bottle {
+      font-size: 2.5rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+
+    /* Big bottles */
+    .big-bottles {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      font-size: 6rem;
+    }
+
+    /* Email section */
+    .signup {
+      margin-top: 30px;
+    }
+
+    .signup p {
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 70%;
+      max-width: 300px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #38bdf8;
+      color: #020617;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+  </style>
 </head>
 <body>
-  <h1>TV Show Title</h1>
-  <p>Prototype site running.</p>
-  <script src="js/main.js"></script>
+
+  <div class="container">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <div class="bottle">🍾</div>
+      <div class="bottle">🍾</div>
+    </div>
+
+    <h1>TWOBOTTLES</h1>
+
+    <!-- Big bottles -->
+    <div class="big-bottles">
+      <div>🍾</div>
+      <div>🍾</div>
+    </div>
+
+    <!-- Email signup -->
+    <div class="signup">
+      <p>Stay in the loop. Drop your email.</p>
+      <form>
+        <input type="email" placeholder="your@email.com" required />
+        <br />
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+
+  </div>
+
 </body>
 </html>
